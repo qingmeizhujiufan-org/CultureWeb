@@ -1,0 +1,119 @@
+.zui-upload-picture-card {
+    .ant-upload-list-picture-card .ant-upload-list-item {
+        width: 210px !important;
+        height: 210px !important;
+    }
+}
+
+.grid {
+
+    .grid-item {
+        width: 228px;
+        margin-bottom: 15px;
+        box-shadow: 0px 0px 3px 0px rgba(144, 144, 144, 0.5);
+        border: 1px solid rgba(239, 239, 239, 1);
+        cursor: pointer;
+        transition: box-shadow .2s ease-in;
+
+        &:hover {
+            box-shadow: 0px 0px 11px 0px rgba(144, 144, 144, 0.5);
+
+            img {
+                transform: scale(1.05);
+            }
+        }
+
+        .wrap-img {
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            transition: transform .2s ease-in;
+        }
+
+        .info {
+            background-color: #fff;
+            line-height: 60px;
+
+            .creator {
+                color: #170202;
+            }
+
+            .date {
+                text-align: right;
+                color: #999;
+            }
+        }
+
+        .extra {
+            font-size: 12px;
+            color: #9E7D6B;
+            background-color: #FAFAFA;
+            line-height: 47px;
+            border-top: 1px solid rgba(156, 156, 156, .12);
+
+            .anticon {
+                margin-right: 5px;
+                font-size: 18px;
+                vertical-align: text-bottom;
+            }
+        }
+    }
+}
+
+.loading-container {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.zui-modal {
+    .ant-modal-content {
+        min-height: 526px;
+        border-radius: 0;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0px 2px 4px 0px rgba(173, 173, 173, 0.94);
+
+        .ant-modal-body {
+            padding: 60px;
+        }
+
+        .ant-upload.ant-upload-drag {
+            margin-top: 32px;
+            padding: 41px 0 13px;
+            border: 1px dashed #B8B8B8;
+            border-radius: 0;
+            background-color: #fff;
+        }
+
+        .ant-modal-footer {
+            padding: 0;
+            border-top: none;
+            border-radius: 0;
+        }
+    }
+}
+
+.no-more {
+    margin-top: 150px;
+    padding: 30px 0;
+    color: #7D7D7D;
+    text-align: center;
+    border-top: 1px solid rgba(203, 203, 203, 1);
+}
+
+.page-picture-detail {
+    .grid {
+        margin-top: 45px;
+        padding-bottom: 80px;
+
+        .grid-item {
+            margin: 0;
+            img {
+                height: 210px;
+            }
+        }
+    }
+}

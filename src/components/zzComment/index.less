@@ -1,0 +1,105 @@
+.comment-box {
+    display: inline-block;
+    width: 900px;
+    border-top: 1px solid #D9D9D9;
+
+    .comment-dialog {
+        padding: 30px 0 15px 30px;
+
+        .title {
+            height: 25px;
+            margin-bottom: 25px;
+            font-size: 18px;
+            color: #170202;
+            line-height: 25px;
+        }
+
+        .ant-btn {
+            width: 100px;
+            color: #9E5C29;
+            border-color: #9E5C29;
+        }
+    }
+
+    .comment-list {
+        border-top: 1px solid #e8e8e8;
+
+        .ant-btn {
+            width: 100px;
+            color: #9E5C29;
+            border-color: #9E5C29;
+        }
+
+        .ant-list-vertical {
+            .ant-list-item-meta-avatar {
+                display: block;
+            }
+
+            .ant-list-item-meta-title {
+                margin-bottom: 4px;
+                font-size: 14px;
+            }
+        }
+
+        .ant-list-item {
+
+            &:last-child {
+                border-bottom: none !important;
+            }
+
+            &.top-item {
+                padding-left: 30px;
+
+                &:last-child {
+                    border-bottom: 1px solid #e8e8e8 !important;
+                }
+            }
+
+            &:not(.top-item) {
+
+                &:last-child{
+                    padding-bottom: 0;
+                }
+
+                .ant-list-item-meta {
+                    position: relative;
+                    margin: 0;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        bottom: -8px;
+                        left: -85px;
+                        right: 0;
+                        height: 1px;
+                        background-color: #e8e8e8;
+                    }
+
+                    &:last-of-type:after {
+                        height: 0 !important;
+                    }
+                }
+
+                .ant-list-item-content {
+                    margin-bottom: 0 !important;
+                }
+            }
+
+            .ant-list-item-meta-title {
+                a {
+                    color: #9E7D6B;
+                }
+            }
+
+            .ant-list-item-meta-description {
+                color: #7D7D7D;
+            }
+        }
+
+        .ant-list-pagination {
+            height: 105px;
+            margin: 0;
+            padding-top: 41px;
+        }
+    }
+}

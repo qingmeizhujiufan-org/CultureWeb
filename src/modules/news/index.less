@@ -1,0 +1,148 @@
+.page-news {
+
+    .news-bg {
+        width: 100%;
+        height: 160px;
+        background-image: url('../../assets/img/news-bg.jpg');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .city-section {
+        height: 53px;
+        line-height: 53px;
+        border-bottom: 1px solid #D8D8D8;
+        overflow: hidden;
+
+        .city-list {
+            & > li {
+                position: relative;
+                margin: 0 20px;
+                padding: 0;
+                color: #47340B;
+                cursor: pointer;
+                transition: color .2s ease-in;
+
+                &:first-child {
+                    margin-left: 10px;
+                }
+
+                &:last-child {
+                    margin-right: 10px;
+                }
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    bottom: 1px;
+                    width: 0;
+                    height: 2px;
+                    background-color: #9E5C29;
+                    transform: translateX(-50%);
+                    transition: width .15s ease-in;
+                }
+
+                &.active {
+                    color: #9E5C29;
+
+                    &:after {
+                        width: 28px;
+                    }
+                }
+            }
+        }
+    }
+
+    .ant-list {
+        margin: 40px 0 100px;
+
+        .ant-btn {
+            width: 400px;
+            margin-top: 28px;
+            color: #47340B;
+        }
+    }
+
+    .ant-list-item {
+        height: 260px;
+        padding: 40px !important;
+        transition: box-shadow ease-in .2s;
+
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0 0 11px #CDCDCD;
+        }
+    }
+
+    .ant-list-vertical {
+
+        .ant-list-item-meta-avatar {
+            display: block;
+        }
+
+        .ant-list-item-meta-content {
+            position: relative;
+            height: 100%;
+            padding: 0 24px;
+
+            .read-info {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                margin: 0 0 -7px 24px;
+                font-size: 14px;
+            }
+        }
+
+        .ant-list-item-meta {
+            height: 100%;
+            margin-bottom: 0;
+
+            .ant-list-item-meta-title {
+                margin-bottom: 25px;
+                font-size: 24px;
+
+                & > a {
+                    color: #2D2D2D !important;
+
+                    &:hover {
+                        color: #2D2D2D;
+                    }
+                }
+            }
+
+            .ant-list-item-meta-description {
+                font-size: 16px;
+                color: #7B7B7B;
+                line-height:32px;
+            }
+        }
+
+        .ant-list-item-extra {
+            position: relative;
+            width: 150px;
+            margin: 0;
+
+            .extra {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                width: 100%;
+                transform: translateY(-50%);
+
+                .ant-divider, .ant-divider-vertical {
+                    height: 40px;
+                    margin: 0;
+                    margin-top: 3px;
+                }
+
+                .anticon {
+                    font-size: 18px;
+                    color: #E3E3E3;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,121 @@
+.login {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .login-header {
+        height: 80px;
+        line-height: 80px;
+
+        .logo {
+            line-height: 80px;
+        }
+
+        .back {
+            font-size: 16px;
+
+            a {
+                color: #242121;
+            }
+        }
+    }
+
+    .login-content {
+        width: 100%;
+        height: calc(~"100vh - 80px");
+        background: #47340B url("../../assets/img/login-bg.png") no-repeat;
+        background-size: cover;
+
+        .login-box {
+            position: relative;
+            width: 330px;
+            height: 340px;
+            padding-top: 35px;
+            text-align: center;
+            background-color: #fff;
+
+            h1 {
+                position: relative;
+                margin: 0;
+                font-size: 24px;
+                color: #B47B4D;
+                line-height: 33px;
+
+                &:before, &:after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    width: 46px;
+                    height: 1px;
+                    background-color: #B47B4D;
+                }
+
+                &:before {
+                    left: 52px;
+                }
+
+                &:after {
+                    right: 52px;
+                }
+
+                .left-dot,
+                .right-dot {
+                    position: absolute;
+                    top: 50%;
+                    width: 6px;
+                    height: 6px;
+                    broder-radius: 1px;
+                    background-color: #B47B4D;
+                    transform: rotate(45deg) translateY(-50%);
+                }
+
+                .left-dot {
+                    left: 100px;
+                }
+
+                .right-dot {
+                    right: 105px;
+                }
+            }
+
+            .qrcode {
+                margin-top: 30px;
+                text-align: center;
+
+                img {
+                    width: 132px;
+                    height: 136px;
+                }
+            }
+
+            .tip {
+                position: absolute;
+                bottom: 28px;
+                left: 0;
+                right: 0;
+                display: block;
+                width: 100%;
+                font-size: 16px;
+                color: #B47B4D;
+                text-align: center;
+                line-height: 22px;
+            }
+        }
+    }
+
+    .login-input input {
+        border: none;
+        border-bottom: 1px solid #d9d9d9;
+        border-radius: 0;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .login-form-button {
+        width: 100%;
+        border-radius: 50px;
+    }
+}

@@ -1,0 +1,245 @@
+.page-home {
+
+    .slider-box {
+        position: relative;
+
+        .ant-carousel .slick-prev, .ant-carousel .slick-next {
+            width: 43px;
+            height: 46px;
+            margin-top: -23px;
+            z-index: 10;
+
+            &:before {
+                font-family:"iconfont" !important;
+                font-size:43px;
+                font-style:normal;
+                -webkit-font-smoothing: antialiased;
+                -webkit-text-stroke-width: 0.01px;
+                -moz-osx-font-smoothing: grayscale;
+                color: #fff;
+                line-height: 46px;
+                opacity: .5;
+                transition: opacity ease-in .2s;
+            }
+
+            &:hover:before {
+                opacity: 1;
+            }
+        }
+
+        .ant-carousel .slick-prev {
+            left: 25px;
+
+            &:before {
+                content: '\e6f3';
+            }
+        }
+
+        .ant-carousel .slick-next {
+            right: 25px;
+
+            &:before {
+                content: '\e6f1';
+            }
+        }
+
+        .ant-carousel .slick-initialized .slick-slide {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            text-align: center;
+
+            .banner {
+                height: 450px;
+                background-color: #f5f5f5;
+                background-position: center;
+            }
+
+            .carousel-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+
+                h1, p {
+                    color: #fff;
+                }
+
+                h1 {
+                    font-size: 60px;
+                    margin-bottom: 5px;
+                }
+
+                p {
+                    font-size: 18px;
+                }
+
+                .follow {
+                    display: inline-block;
+                    width: 120px;
+                    height: 42px;
+                    margin-top: 10px;
+                    color: #fff;
+                    line-height: 40px;
+                    text-align: center;
+                    border-radius: 21px;
+                    border: 1px solid rgba(255, 255, 255, 1);
+                }
+            }
+        }
+    }
+
+    .plate {
+        margin-bottom: 100px;
+        text-align: center;
+
+        &:first-child {
+            margin-top: 73px;
+        }
+
+        h1 {
+            margin: 0;
+            height: 33px;
+            line-height: 33px;
+            font-size: 24px;
+            color: #383838;
+        }
+
+        p {
+            margin: 16px 0 40px;
+            height: 22px;
+            font-size: 16px;
+            color: #404040;
+            line-height: 22px;
+        }
+
+        .box {
+            min-height: 400px;
+            border-radius: 6px;
+            border: 1px solid rgba(227, 227, 227, 1);
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0px 0px 12px 2px rgba(224, 224, 224, 0.5);
+
+            &.news {
+                padding: 15px;
+
+                .news-list {
+                    text-align: left;
+
+                    .ant-list-item-meta-title {
+                        a {
+                            font-size: 20px;
+                            color: #2B2B2B !important;
+                            line-height: 30px;
+                        }
+                    }
+
+                    .ant-list-item-meta-description {
+                        font-size: 16px;
+                        color: #727272 !important;
+                    }
+                }
+
+                .news-list-image {
+                    .wrap-img {
+                        position: relative;
+                        height: 370px !important;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        .news-title {
+                            position: absolute;
+                            bottom: 0;
+                            width: 100%;
+                            height: 70px;
+                            padding-left: 40px;
+                            line-height: 70px;
+                            color: #fff;
+                            font-size: 16px;
+                            text-align: left;
+                            background-color: rgba(0, 0, 0, .33284);
+                        }
+                    }
+                }
+
+                .ant-carousel .slick-dots {
+                    bottom: 38px;
+                    right: 35px;
+                    text-align: right;
+
+                    li {
+
+                        button {
+                            width: 6px;
+                            height: 6px;
+                            background-color: #B9B7B8;
+                        }
+
+                        &.slick-active button {
+                            width: 6px;
+                            background-color: #fff;
+                        }
+                    }
+                }
+            }
+
+            &.culture {
+                height: 420px;
+                padding: 20px;
+
+                .img-list {
+
+                    .wrap-img {
+                        display: inline-block;
+                        width: 372px;
+                        height: 350px;
+                        border-radius: 7px;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                .ant-carousel .slick-dots {
+                    bottom: -20px;
+
+                    li {
+
+                        button {
+                            width: 30px;
+                            background-color: #D8D8D8;
+                        }
+
+                        &.slick-active button {
+                            width: 30px;
+                            background-color: #9E5C29;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .page-content.lower {
+        height: 470px;
+        background-image: url("../../assets/img/home_lower2.png");
+        background-repeat: no-repeat;
+        background-size: 100% 427px;
+        background-position: bottom;
+
+        .plate {
+
+            .art {
+                height: 178px;
+                margin-top: 60px;
+                background: url("../../assets/img/home_lower1.png") center center no-repeat;
+            }
+        }
+    }
+}
