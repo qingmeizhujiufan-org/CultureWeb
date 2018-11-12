@@ -150,6 +150,7 @@ class ZZHeader extends React.Component {
             tabs,
         });
         sessionStorage.removeItem('searchValue')
+        window.scrollTo(0,0)
         this.context.router.push(tabs[index].link);
     }
 
