@@ -27,7 +27,7 @@ class ZZFooter extends React.Component {
                         </Col>
                     </Row>
                     <div className='copyright'>
-                        ©2014-2018 他山网络 Bendi Inc. 鄂ICP备14048854号・鄂公网安备11010502026416
+                        ©2014-2018 他山网络 Bendi Inc. 鄂ICP备18025612号
                     </div>
                 </div>
             </Footer>
