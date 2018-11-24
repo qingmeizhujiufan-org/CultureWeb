@@ -50,7 +50,9 @@ class Login extends React.Component {
     }
 
     render() {
-        const {getFieldDecorator} = this.props.form;
+        const jumpUrl = encodeURIComponent(window.location.href);
+        const appid = "wx18a09da7e070dfb3";
+        const weixinLoginUrl = `https://open.weixin.qq.com/connect/qrconnect?appid=${appid}&redirect_uri=${jumpUrl}&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect`;
 
         return (
             <div className="login">
@@ -73,7 +75,7 @@ class Login extends React.Component {
                                     <span className='right-dot'></span>
                                 </h1>
                                 <div className='qrcode'>
-                                    <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx18a09da7e070dfb3&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect">
+                                    <a href={weixinLoginUrl}>
                                         <img src={followPublic}/>
                                     </a>
                                 </div>
