@@ -57,12 +57,12 @@ class Index extends React.Component {
                                         amapkey='540e9b2c0349b6a56b5c74d021aa28e5'
                                         zoom={12}
                                         plugins={['ToolBar']}
-                                        center={{longitude: 114.304063, latitude: 30.595826}}
+                                        center={{longitude: 114.297091, latitude: 30.590048}}
                                     >
                                         <Marker
                                             position={{
-                                                longitude: 114.304063,
-                                                latitude: 30.595826
+                                                longitude: 114.297091,
+                                                latitude: 30.590048
                                             }}
                                             clickable
                                             events={markerEvents}
