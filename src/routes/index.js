@@ -98,6 +98,12 @@ const Login = Loadable({
     loading: Loading
 });
 
+/* 注册 */
+const Register = Loadable({
+    loader: () => import('../modules/register/component/'),
+    loading: Loading
+});
+
 module.exports = (
     <Router history={hashHistory}>
         <Route path="/" component={App}>
@@ -118,6 +124,7 @@ module.exports = (
                 <route path="personal" component={User}/>
             </Route>
             <Route path="login" component={Login}/>
+            <Route path="register" component={Register}/>
         </Route>
     </Router>
 );

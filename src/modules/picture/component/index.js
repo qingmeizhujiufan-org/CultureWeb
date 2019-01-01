@@ -102,7 +102,7 @@ class Picture extends React.Component {
 
     queryList = (callback) => {
         const param = {};
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
+        param.userId = localStorage.userId ? localStorage.userId : '';
         param.pageNumber = this.state.pageNumber;
         param.pageSize = 10;
         axios.get('taste/queryList', {params: param}).then(res => res.data).then(data => {
@@ -143,6 +143,10 @@ class Picture extends React.Component {
     }
 
     showPublishModal = () => {
+        if(!localStorage.userId){
+            message.warn('抱歉！您还未登录，请登录后再发布');
+            return;
+        }
         this.setState({
             visible: true,
         });
@@ -199,7 +203,7 @@ class Picture extends React.Component {
                 values.tasteCover = values.tasteCover.map(item => {
                     return item.response.data.id;
                 }).join(',');
-                values.creator = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
+                values.creator = localStorage.userId;
                 this.setState({submitLoading: true});
                 axios.post('taste/save', values).then(res => res.data).then(data => {
                     if (data.success) {
@@ -223,9 +227,13 @@ class Picture extends React.Component {
     handlePreviewCancel = () => this.setState({previewVisible: false})
 
     collect = (obj, index) => {
+        if(!localStorage.userId){
+            message.warn('抱歉！您还未登录，请登录后再收藏');
+            return;
+        }
         const param = {};
         param.tasteId = obj.id;
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
+        param.userId = localStorage.userId;
         axios.post('taste/collect', param).then(res => res.data).then(data => {
             if (data.success) {
                 const dataSource = this.state.dataSource;

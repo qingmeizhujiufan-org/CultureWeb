@@ -31,76 +31,9 @@
             position: relative;
             width: 330px;
             height: 340px;
-            padding-top: 35px;
-            text-align: center;
+            padding: 20px;
+            text-align: left;
             background-color: #fff;
-
-            h1 {
-                position: relative;
-                margin: 0;
-                font-size: 24px;
-                color: #B47B4D;
-                line-height: 33px;
-
-                &:before, &:after {
-                    content: '';
-                    position: absolute;
-                    top: 50%;
-                    width: 46px;
-                    height: 1px;
-                    background-color: #B47B4D;
-                }
-
-                &:before {
-                    left: 52px;
-                }
-
-                &:after {
-                    right: 52px;
-                }
-
-                .left-dot,
-                .right-dot {
-                    position: absolute;
-                    top: 50%;
-                    width: 6px;
-                    height: 6px;
-                    broder-radius: 1px;
-                    background-color: #B47B4D;
-                    transform: rotate(45deg) translateY(-50%);
-                }
-
-                .left-dot {
-                    left: 100px;
-                }
-
-                .right-dot {
-                    right: 105px;
-                }
-            }
-
-            .qrcode {
-                margin-top: 30px;
-                text-align: center;
-
-                img {
-                    width: 132px;
-                    height: 136px;
-                }
-            }
-
-            .tip {
-                position: absolute;
-                bottom: 28px;
-                left: 0;
-                right: 0;
-                display: block;
-                width: 100%;
-                font-size: 16px;
-                color: #B47B4D;
-                text-align: center;
-                line-height: 22px;
-            }
         }
     }
 
@@ -110,7 +43,7 @@
         border-radius: 0;
 
         &:focus {
-            box-shadow: none;
+            box-shadow: none !important;
         }
     }
 

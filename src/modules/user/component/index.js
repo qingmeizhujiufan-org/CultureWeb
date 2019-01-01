@@ -57,7 +57,7 @@ class Index extends React.Component {
 
     getMyPic = () => {
         let param = {};
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
+        param.userId = localStorage.userId;
         this.setState({loading: true});
         axios.get('taste/queryUserPic', {params: param}).then(res => res.data).then(data => {
             if (data.success) {
@@ -75,7 +75,7 @@ class Index extends React.Component {
 
     queryUserCollectArt = () => {
         let param = {};
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
+        param.userId = localStorage.userId;
         this.setState({loading: true});
         axios.get('art/queryUserCollectArt', {params: param}).then(res => res.data).then(data => {
             if (data.success) {
@@ -93,7 +93,7 @@ class Index extends React.Component {
 
     queryLikeTotal = () => {
         let param = {};
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
+        param.userId = localStorage.userId;
         axios.get('taste/queryLikeTotal', {params: param}).then(res => res.data).then(data => {
             if (data.success) {
                 this.setState({
@@ -107,7 +107,7 @@ class Index extends React.Component {
 
     queryUserCollectCulture = () => {
         let param = {};
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
+        param.userId = localStorage.userId;
         this.setState({loading: true});
         axios.get('culture/queryUserCollectCulture', {params: param}).then(res => res.data).then(data => {
             if (data.success) {
@@ -181,7 +181,7 @@ class Index extends React.Component {
                 <div className="page-content">
                     <div className='content user-bg'>
                         <Avatar size="large" src={defaultUser}/>
-                        <span className='nickname'>{'青梅煮酒'}</span>
+                        <span className='nickname'>{localStorage.nickName}</span>
                         <span className='area'>{'湖北·武汉'}</span>
                     </div>
                     <div className='content'>

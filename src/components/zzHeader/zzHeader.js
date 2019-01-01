@@ -14,7 +14,8 @@ import {
     Badge,
     Select,
     Modal,
-    List
+    List,
+    message
 } from 'antd';
 import _forEach from 'lodash/forEach';
 import './zzHeader.less';
@@ -74,7 +75,9 @@ class ZZHeader extends React.Component {
     }
 
     componentDidMount = () => {
-        this.queryMessageList();
+        if (localStorage.userId) {
+            this.queryMessageList(localStorage.userId);
+        }
     }
 
     componentWillReceiveProps = nextProps => {
@@ -103,9 +106,9 @@ class ZZHeader extends React.Component {
         });
     }
 
-    queryMessageList = () => {
+    queryMessageList = userId => {
         const param = {};
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
+        param.userId = userId;
         axios.get('message/queryList', {params: param}).then(res => res.data).then(data => {
             if (data.success) {
                 this.setState({
@@ -150,18 +153,16 @@ class ZZHeader extends React.Component {
             tabs,
         });
         sessionStorage.removeItem('searchValue')
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
         this.context.router.push(tabs[index].link);
     }
 
     logout = () => {
         let param = {};
         param.userId = localStorage.userId;
-        axios.post('server/LoginOut', param).then(res => res.data).then(data => {
+        axios.post('user/LoginOut', param).then(res => res.data).then(data => {
             if (data.success) {
-                localStorage.removeItem('token');
-                localStorage.removeItem('userId');
-                message.success('已安全退出！');
+                localStorage.clear();
                 this.context.router.push('/login');
             } else {
                 message.error(data.backMsg);
@@ -290,20 +291,26 @@ class ZZHeader extends React.Component {
                                         </Badge>
                                     </Col>
                                     <Col style={{width: 130}}>
-                                        <Avatar size="small" src={defaultUser}
-                                                style={{marginRight: 10, verticalAlign: -7}}/>
-                                        <Dropdown placement="bottomCenter" overlay={(
-                                            <Menu>
-                                                <Menu.Item>
-                                                    <Link to="frame/personal">个人中心</Link>
-                                                </Menu.Item>
-                                                <Menu.Item>
-                                                    <span onClick={this.logout}>退出登录</span>
-                                                </Menu.Item>
-                                            </Menu>
-                                        )}>
-                                            <a className="ant-dropdown-link">青梅煮酒 <Icon type="down"/></a>
-                                        </Dropdown>
+                                        {
+                                            localStorage.userId ? (
+                                                <div>
+                                                    <Avatar size="small" src={defaultUser}
+                                                            style={{marginRight: 10, verticalAlign: -7}}/>
+                                                    <Dropdown placement="bottomCenter" overlay={(
+                                                        <Menu>
+                                                            <Menu.Item>
+                                                                <Link to="frame/personal">个人中心</Link>
+                                                            </Menu.Item>
+                                                            <Menu.Item>
+                                                                <span onClick={this.logout}>退出登录</span>
+                                                            </Menu.Item>
+                                                        </Menu>
+                                                    )}>
+                                                        <a className="ant-dropdown-link">青梅煮酒 <Icon type="down"/></a>
+                                                    </Dropdown>
+                                                </div>
+                                            ) : (<Link to='login'>登录</Link>)
+                                        }
                                     </Col>
                                 </Row>
                             </Col>
