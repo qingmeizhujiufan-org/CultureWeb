@@ -1,5 +1,5 @@
-const ADDR = 'http://localhost:8118/';
-// const ADDR = 'http://www.hbfolkways.com/';
+// const ADDR = 'http://localhost:8118/';
+const ADDR = 'http://www.hbfolkways.com/';
 
 module.exports = {
 	BASE_HOST: ADDR,
