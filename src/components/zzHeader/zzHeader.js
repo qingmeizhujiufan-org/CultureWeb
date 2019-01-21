@@ -294,7 +294,7 @@ class ZZHeader extends React.Component {
                                         {
                                             localStorage.userId ? (
                                                 <div>
-                                                    <Avatar size="small" src={defaultUser}
+                                                    <Avatar size="small" src={localStorage.headimgurl}
                                                             style={{marginRight: 10, verticalAlign: -7}}/>
                                                     <Dropdown placement="bottomCenter" overlay={(
                                                         <Menu>
@@ -306,7 +306,7 @@ class ZZHeader extends React.Component {
                                                             </Menu.Item>
                                                         </Menu>
                                                     )}>
-                                                        <a className="ant-dropdown-link">青梅煮酒 <Icon type="down"/></a>
+                                                        <a className="ant-dropdown-link">{localStorage.nickName} <Icon type="down"/></a>
                                                     </Dropdown>
                                                 </div>
                                             ) : (<Link to='login'>登录</Link>)

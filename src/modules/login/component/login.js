@@ -2,13 +2,11 @@ import React from 'react';
 import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 import {Form, Icon, Row, Col, message} from 'antd';
-import restUrl from 'RestUrl';
+import axios from 'Utils/axios';
 import '../login.less';
 
 import loginLeft from 'Img/login-left.png';
 import followPublic from 'Img/followPublic.png';
-
-const loginUrl = restUrl.ADDR + 'server/login';
 
 class Login extends React.Component {
     constructor(props) {
@@ -20,24 +18,27 @@ class Login extends React.Component {
     }
 
     componentDidMount = () => {
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                this.setState({
-                    loading: true
-                });
-                console.log('Received values of form: ', values);
-                let param = {};
-                param.user_name = values.userName;
-                param.user_pwd = values.password;
-                ajax.postJSON(loginUrl, JSON.stringify(param), (data) => {
+        const query = this.props.location.query;
+        if (query) {
+            const {code, state} = query;
+            if (code && state === 'STATE') {
+                axios.post('user/login', {
+                    code
+                }).then(res => res.data).then(data => {
                     if (data.success) {
-                        localStorage.token = data.token;
-                        localStorage.userId = data.userId;
-                        this.context.router.push('/frame/home');
+                        const backData = data.backData;
+                        localStorage.token = backData.token;
+
+                        const userInfo = backData.userInfo;
+                        localStorage.userId = userInfo.id;
+                        localStorage.nickName = userInfo.nickname;
+                        localStorage.sex = userInfo.sex;
+                        localStorage.province = userInfo.province;
+                        localStorage.city = userInfo.city;
+                        localStorage.country = userInfo.country;
+                        localStorage.headimgurl = userInfo.headimgurl;
+
+                        this.context.router.push('/frame');
                     } else {
                         message.error(data.backMsg);
                     }
@@ -46,7 +47,7 @@ class Login extends React.Component {
                     });
                 });
             }
-        });
+        }
     }
 
     render() {
