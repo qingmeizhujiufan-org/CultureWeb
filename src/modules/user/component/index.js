@@ -180,9 +180,9 @@ class Index extends React.Component {
             <div className='page-user bg-gray' style={{padding: '50px 0 30px'}}>
                 <div className="page-content">
                     <div className='content user-bg'>
-                        <Avatar size="large" src={defaultUser}/>
+                        <Avatar size="large" src={localStorage.headimgurl}/>
                         <span className='nickname'>{localStorage.nickName}</span>
-                        <span className='area'>{'湖北·武汉'}</span>
+                        <span className='area'>{`${localStorage.province} · ${localStorage.city}`}</span>
                     </div>
                     <div className='content'>
                         <div className='user-info clearfix'>

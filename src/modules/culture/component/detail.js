@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import PropTypes from 'prop-types';
-import {Row, Col, Icon, message, Spin, Breadcrumb} from 'antd';
+import {Row, Col, Icon, message, Spin, Breadcrumb, Avatar} from 'antd';
 import draftToHtml from 'draftjs-to-html';
 import restUrl from 'RestUrl';
 import '../index.less';
@@ -196,7 +196,7 @@ class Detail extends React.Component {
                                     </div>
                                     <ZZComment
                                         id='comment'
-                                        avatar={data.avatar ? restUrl.BASE_HOST + data.avatar.filePath : null}
+                                        avatar={localStorage.userId ? localStorage.headimgurl : <Avatar icon="user" />}
                                         queryUrl={queryCommentListUrl}
                                         saveUrl={addUrl}
                                         queryParams={{cultureId: this.props.params.id}}

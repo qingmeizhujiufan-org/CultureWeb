@@ -77,10 +77,10 @@ class Login extends React.Component {
                                 </h1>
                                 <div className='qrcode'>
                                     <a href={weixinLoginUrl}>
-                                        <img src={followPublic}/>
+                                        <Icon type="wechat"/>
                                     </a>
                                 </div>
-                                <div className='tip'><Icon type="wechat"/> 扫一扫，微信账号登录</div>
+                                <div className='tip'>点击上方微信图标登录</div>
                             </div>
                         </Col>
                     </Row>
