@@ -133,37 +133,42 @@ class Index extends React.Component {
                                         />
                                     </Col>
                                     <Col style={{width: 600, height: 370}}>
-                                        <Carousel
-                                            autoplay={pictureNews.length > 0}
-                                            className='news-list-image'
-                                        >
-                                            {
-                                                pictureNews.map((item, index) => {
-                                                    return (
-                                                        <div key={index}>
-                                                            <div className='wrap-img'>
-                                                                <Link to={`/frame/news/detail/${item.id}`}>
-                                                                    <LazyLoad
-                                                                        throttle={200}
-                                                                        height={370}
-                                                                        placeholder={<Icon type="loading"
-                                                                                           theme="outlined"/>}
-                                                                    >
-                                                                        <img
-                                                                            src={restUrl.BASE_HOST + item.newsCover.filePath}/>
-                                                                    </LazyLoad>
-                                                                    <div className='news-title zui-ellipsis'
-                                                                         style={{
-                                                                             width: 600,
-                                                                             paddingRight: 100
-                                                                         }}>{item.newsTitle}</div>
-                                                                </Link>
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </Carousel>
+                                        {
+                                            pictureNews.length > 0 ? (
+                                                <Carousel
+                                                    autoplay
+                                                    className='news-list-image'
+                                                >
+                                                    {
+                                                        pictureNews.map((item, index) => {
+                                                            return (
+                                                                <div
+                                                                    key={index}
+                                                                    className='wrap-img'
+                                                                >
+                                                                    <Link to={`/frame/news/detail/${item.id}`}>
+                                                                        <LazyLoad
+                                                                            throttle={200}
+                                                                            height={370}
+                                                                            placeholder={<Icon type="loading"
+                                                                                               theme="outlined"/>}
+                                                                        >
+                                                                            <img
+                                                                                src={restUrl.BASE_HOST + item.newsCover.filePath}/>
+                                                                        </LazyLoad>
+                                                                        <div className='news-title zui-ellipsis'
+                                                                             style={{
+                                                                                 width: 600,
+                                                                                 paddingRight: 100
+                                                                             }}>{item.newsTitle}</div>
+                                                                    </Link>
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </Carousel>
+                                            ) : null
+                                        }
                                     </Col>
                                 </Row>
                             </article>
@@ -172,59 +177,63 @@ class Index extends React.Component {
                             <h1>文化展示</h1>
                             <p>详尽的荆楚风土人情、美食美景</p>
                             <article className='box culture'>
-                                <Carousel
-                                    autoplay={cultureList.length > 0}
-                                    autoplaySpeed={5000}
-                                >
-                                    {
-                                        cultureList.map((item, index) => {
-                                            if (index % 3 === 0) {
-                                                return (
-                                                    <div key={index}>
-                                                        <div className='img-list'>
-                                                            <Row type='flex'>
-                                                                <Col className='wrap-img'>
-                                                                    <LazyLoad
-                                                                        throttle={200}
-                                                                        height={370}
-                                                                        placeholder={<Icon type="loading" spin
-                                                                                           theme="outlined"/>}
-                                                                    >
-                                                                        <img
-                                                                            src={restUrl.BASE_HOST + cultureList[index].filePath}/>
-                                                                    </LazyLoad>
-                                                                </Col>
-                                                                <Col className='wrap-img'
-                                                                     style={{margin: '0 18px'}}>
-                                                                    <LazyLoad
-                                                                        throttle={200}
-                                                                        height={370}
-                                                                        placeholder={<Icon type="loading" spin
-                                                                                           theme="outlined"/>}
-                                                                    >
-                                                                        <img
-                                                                            src={restUrl.BASE_HOST + cultureList[index + 1].filePath}/>
-                                                                    </LazyLoad>
-                                                                </Col>
-                                                                <Col className='wrap-img'>
-                                                                    <LazyLoad
-                                                                        throttle={200}
-                                                                        height={370}
-                                                                        placeholder={<Icon type="loading" spin
-                                                                                           theme="outlined"/>}
-                                                                    >
-                                                                        <img
-                                                                            src={restUrl.BASE_HOST + cultureList[index + 2].filePath}/>
-                                                                    </LazyLoad>
-                                                                </Col>
-                                                            </Row>
-                                                        </div>
-                                                    </div>
-                                                )
+                                {
+                                    cultureList.length > 0 ? (
+                                        <Carousel
+                                            autoplay
+                                            autoplaySpeed={5000}
+                                        >
+                                            {
+                                                cultureList.map((item, index) => {
+                                                    if (index % 3 === 0) {
+                                                        return (
+                                                            <div key={index}>
+                                                                <div className='img-list'>
+                                                                    <Row type='flex'>
+                                                                        <Col className='wrap-img'>
+                                                                            <LazyLoad
+                                                                                throttle={200}
+                                                                                height={370}
+                                                                                placeholder={<Icon type="loading" spin
+                                                                                                   theme="outlined"/>}
+                                                                            >
+                                                                                <img
+                                                                                    src={restUrl.BASE_HOST + cultureList[index].filePath}/>
+                                                                            </LazyLoad>
+                                                                        </Col>
+                                                                        <Col className='wrap-img'
+                                                                             style={{margin: '0 18px'}}>
+                                                                            <LazyLoad
+                                                                                throttle={200}
+                                                                                height={370}
+                                                                                placeholder={<Icon type="loading" spin
+                                                                                                   theme="outlined"/>}
+                                                                            >
+                                                                                <img
+                                                                                    src={restUrl.BASE_HOST + cultureList[index + 1].filePath}/>
+                                                                            </LazyLoad>
+                                                                        </Col>
+                                                                        <Col className='wrap-img'>
+                                                                            <LazyLoad
+                                                                                throttle={200}
+                                                                                height={370}
+                                                                                placeholder={<Icon type="loading" spin
+                                                                                                   theme="outlined"/>}
+                                                                            >
+                                                                                <img
+                                                                                    src={restUrl.BASE_HOST + cultureList[index + 2].filePath}/>
+                                                                            </LazyLoad>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    }
+                                                })
                                             }
-                                        })
-                                    }
-                                </Carousel>
+                                        </Carousel>
+                                    ) : null
+                                }
                             </article>
                         </section>
                     </div>
