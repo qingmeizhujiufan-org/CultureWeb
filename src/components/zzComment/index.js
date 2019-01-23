@@ -35,7 +35,6 @@ class ZZComment extends React.Component {
         super(props);
 
         this.state = {
-            avatar: this.props.avatar,
             commentList: [],
             commentTree: [],
             commentText: '',
@@ -154,29 +153,34 @@ class ZZComment extends React.Component {
 
 
     addComment = (pId) => {
-        const {queryParams, saveUrl} = this.props;
-        const {commentText, replyText} = this.state;
-        const param = _assign({}, queryParams);
-        param.pId = pId;
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
-        param.comment = pId ? replyText : commentText;
-        if (!pId) this.setState({commentLoading: true});
-        else this.setState({replyLoading: true});
-        axios.post(saveUrl, param).then(res => res.data).then(data => {
-            if (data.success) {
+        if (localStorage.userId) {
+            const {queryParams, saveUrl} = this.props;
+            const {commentText, replyText} = this.state;
+            const param = _assign({}, queryParams);
+            param.pId = pId;
+            param.userId = localStorage.userId;
+            param.comment = pId ? replyText : commentText;
+            if (!pId) this.setState({commentLoading: true});
+            else this.setState({replyLoading: true});
+            axios.post(saveUrl, param).then(res => res.data).then(data => {
+                if (data.success) {
+                    this.setState({
+                        commentText: '',
+                        replyText: '',
+                    });
+                    this.queryCommentList(this.props.queryParams);
+                } else {
+                    message.error(data.backMsg);
+                }
                 this.setState({
-                    commentText: '',
-                    replyText: '',
+                    commentLoading: false,
+                    replyLoading: false
                 });
-                this.queryCommentList(this.props.queryParams);
-            } else {
-                message.error(data.backMsg);
-            }
-            this.setState({
-                commentLoading: false,
-                replyLoading: false
             });
-        });
+        } else {
+            message.warn('请先登录');
+        }
+
     }
 
     renderItem = (item, index) => {
@@ -190,8 +194,8 @@ class ZZComment extends React.Component {
                         <List.Item.Meta
                             avatar={<Avatar
                                 icon="user"
-                                src={(subItem.avatar && subItem.avatar.filePath) ? restUrl.BASE_HOST + subItem.avatar.filePath : null}/>}
-                            title={<a>{`${subItem.userName}  ${subItem.create_time}`}</a>}
+                                src={subItem.headimgurl ? subItem.headimgurl : null}/>}
+                            title={<a>{`${subItem.nickname}  ${subItem.create_time}`}</a>}
                             description={<div>
                                 <div>{subItem.comment}
                                     {
@@ -232,8 +236,8 @@ class ZZComment extends React.Component {
                     avatar={<Avatar
                         size='large'
                         icon="user"
-                        src={(item.avatar && item.avatar.filePath) ? restUrl.BASE_HOST + item.avatar.filePath : null}/>}
-                    title={<a>{`${item.userName}  ${item.create_time}`}</a>}
+                        src={item.headimgurl ? item.headimgurl : null}/>}
+                    title={<a>{`${item.nickname}  ${item.create_time}`}</a>}
                     description={<div>
                         <div>{item.comment}</div>
                         <div>
@@ -273,7 +277,7 @@ class ZZComment extends React.Component {
     }
 
     render() {
-        const {loading, avatar, commentList, commentTree, commentText, commentLoading} = this.state;
+        const {loading, commentList, commentTree, commentText, commentLoading} = this.state;
 
         return (
             <div className='comment-box' id={this.props.id}>
@@ -284,7 +288,7 @@ class ZZComment extends React.Component {
                             <Avatar
                                 size="large"
                                 icon="user"
-                                src={avatar ? avatar : null}
+                                src={localStorage.headimgurl ? localStorage.headimgurl : null}
                             />
                         </Col>
                         <Col style={{width: 814}}>

@@ -196,7 +196,6 @@ class Detail extends React.Component {
                                     </div>
                                     <ZZComment
                                         id='comment'
-                                        avatar={localStorage.userId ? localStorage.headimgurl : <Avatar icon="user" />}
                                         queryUrl={queryCommentListUrl}
                                         saveUrl={addUrl}
                                         queryParams={{cultureId: this.props.params.id}}

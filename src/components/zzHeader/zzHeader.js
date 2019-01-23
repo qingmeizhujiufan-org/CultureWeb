@@ -19,7 +19,6 @@ import {
 } from 'antd';
 import _forEach from 'lodash/forEach';
 import './zzHeader.less';
-import defaultUser from 'Img/default-user.jpg';
 import {shiftDate} from "Utils/util";
 import axios from "Utils/axios";
 
@@ -296,17 +295,22 @@ class ZZHeader extends React.Component {
                                                 <div>
                                                     <Avatar size="small" src={localStorage.headimgurl}
                                                             style={{marginRight: 10, verticalAlign: -7}}/>
-                                                    <Dropdown placement="bottomCenter" overlay={(
-                                                        <Menu>
-                                                            <Menu.Item>
-                                                                <Link to="frame/personal">个人中心</Link>
-                                                            </Menu.Item>
-                                                            <Menu.Item>
-                                                                <span onClick={this.logout}>退出登录</span>
-                                                            </Menu.Item>
-                                                        </Menu>
-                                                    )}>
-                                                        <a className="ant-dropdown-link">{localStorage.nickName} <Icon type="down"/></a>
+                                                    <Dropdown
+                                                        placement="bottomCenter"
+                                                        overlay={(
+                                                            <Menu>
+                                                                <Menu.Item>
+                                                                    <Link to="frame/personal">个人中心</Link>
+                                                                </Menu.Item>
+                                                                <Menu.Item>
+                                                                    <span onClick={this.logout}>退出登录</span>
+                                                                </Menu.Item>
+                                                            </Menu>
+                                                        )}
+                                                    >
+                                                        <a className="ant-dropdown-link">
+                                                            {localStorage.nickName} <Icon type="down"/>
+                                                        </a>
                                                     </Dropdown>
                                                 </div>
                                             ) : (<Link to='login'>登录</Link>)
