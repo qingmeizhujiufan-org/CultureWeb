@@ -21,7 +21,7 @@ class Index extends React.Component {
 
         return (
             <div className='page-vr'>
-                <div style={{margin: '100px 0', textAlign: 'center'}}>
+                <div style={{padding: '100px 0', textAlign: 'center'}}>
                     <img src={vrNoData}/>
                     <p style={{
                         marginTop: 26,

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {
     Row,
     Col,
-    Affix,
     Icon,
     Input,
     Dropdown,
@@ -156,6 +155,10 @@ class ZZHeader extends React.Component {
         this.context.router.push(tabs[index].link);
     }
 
+    userCenter = () => {
+        this.context.router.push('/frame/personal');
+    }
+
     logout = () => {
         let param = {};
         param.userId = localStorage.userId;
@@ -229,98 +232,109 @@ class ZZHeader extends React.Component {
         const {openSearch, messageList, visible, defaultOption} = this.state;
 
         return (
-            <Affix>
-                <header className="zui-header">
-                    <div>
-                        <Row type="flex" justify="space-between" align="middle" style={{height: '100%'}}>
-                            <Col style={{width: 162}}>
-                                <div className='logo'><span className='iconfont icon-hubeiminsu'></span></div>
-                            </Col>
-                            <Col style={{width: 705}}>
-                                <div className='header-tabs'>
-                                    {
-                                        tabs.map((item, index) => {
-                                            return (
-                                                <span
-                                                    key={index}
-                                                    className={`tab ${item.active ? 'tab-active' : ''}`}
-                                                    onClick={() => this.changeTab(index)}
-                                                >{item.title}</span>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            </Col>
-                            <Col style={{width: 433, textAlign: 'right'}}>
-                                <Row type="flex" justify="space-between" align="middle">
-                                    <Col style={{width: 240, height: 32}}>
-                                        <Divider type="vertical"/>
-                                        {
-                                            openSearch ? (
-                                                <div style={{display: 'inline-block'}}>
-                                                    <Select
-                                                        defaultValue={defaultOption}
-                                                        style={{width: 82}}
-                                                        onSelect={this.getSelected}
-                                                    >
-                                                        <Option value="culture">文化</Option>
-                                                        <Option value="news">新闻</Option>
-                                                        <Option value="picture">图片</Option>
-                                                        <Option value="video">视频</Option>
-                                                    </Select>
-                                                    <Divider type="vertical"/>
-                                                </div>
-                                            ) : null
-                                        }
-                                        <Input.Search
-                                            className="input-search"
-                                            placeholder={openSearch ? "请输入搜索内容" : ""}
-
-                                            style={{
-                                                width: openSearch ? 155 : 45,
-                                                transition: 'width 0.2s ease-in'
-                                            }}
-                                            onSearch={(value, event) => this.onSearch(value, event)}
-                                        />
-                                        <Divider type="vertical"/>
-                                    </Col>
-                                    <Col style={{width: 60, textAlign: 'center'}} onClick={this.showModal}>
-                                        <Badge count={messageList.length}>
-                                            <Icon type="bell" className='fontsize-20 message'/>
-                                        </Badge>
-                                    </Col>
-                                    <Col style={{width: 130}}>
-                                        {
-                                            localStorage.userId ? (
-                                                <div>
-                                                    <Avatar size="small" src={localStorage.headimgurl}
-                                                            style={{marginRight: 10, verticalAlign: -7}}/>
-                                                    <Dropdown
-                                                        placement="bottomCenter"
-                                                        overlay={(
-                                                            <Menu>
-                                                                <Menu.Item>
-                                                                    <Link to="frame/personal">个人中心</Link>
-                                                                </Menu.Item>
-                                                                <Menu.Item>
-                                                                    <span onClick={this.logout}>退出登录</span>
-                                                                </Menu.Item>
-                                                            </Menu>
-                                                        )}
-                                                    >
-                                                        <a className="ant-dropdown-link">
-                                                            {localStorage.nickName} <Icon type="down"/>
-                                                        </a>
-                                                    </Dropdown>
-                                                </div>
-                                            ) : (<Link to='login'>登录</Link>)
-                                        }
-                                    </Col>
-                                </Row>
-                            </Col>
-                        </Row>
+            <div className="zui-header">
+                <Row type="flex" justify="space-between" align="middle">
+                    <div className='logo'>
+                        <span className='iconfont icon-hubeiminsu'/>
                     </div>
-                </header>
+                    <div className='header-tabs'>
+                        {
+                            tabs.map((item, index) => {
+                                return (
+                                    <span
+                                        key={index}
+                                        className={`tab ${item.active ? 'tab-active' : ''}`}
+                                        onClick={() => this.changeTab(index)}
+                                    >{item.title}</span>
+                                )
+                            })
+                        }
+                    </div>
+                    <Row type="flex" justify="end" align="middle">
+                        <Col style={{
+                            width: 240,
+                            height: 32,
+                            marginRight: localStorage.userId ? 0 : 20,
+                            textAlign: 'right'
+                        }}>
+                            <Divider type="vertical"/>
+                            {
+                                openSearch ? (
+                                    <div style={{display: 'inline-block'}}>
+                                        <Select
+                                            defaultValue={defaultOption}
+                                            style={{width: 82}}
+                                            onSelect={this.getSelected}
+                                        >
+                                            <Option value="culture">文化</Option>
+                                            <Option value="news">新闻</Option>
+                                            <Option value="picture">图片</Option>
+                                            <Option value="video">视频</Option>
+                                        </Select>
+                                        <Divider type="vertical"/>
+                                    </div>
+                                ) : null
+                            }
+                            <Input.Search
+                                className="input-search"
+                                placeholder={openSearch ? "请输入搜索内容" : ""}
+
+                                style={{
+                                    width: openSearch ? 155 : 45,
+                                    transition: 'width 0.2s ease-in'
+                                }}
+                                onSearch={(value, event) => this.onSearch(value, event)}
+                            />
+                            <Divider type="vertical"/>
+                        </Col>
+                        <div>
+                            {
+                                localStorage.userId ? (
+                                    <Row type="flex" justify="end" align="middle">
+                                        <Badge count={messageList.length}>
+                                            <Icon
+                                                type="bell"
+                                                className='fontsize-20 message'
+                                                onClick={this.showModal}
+                                            />
+                                        </Badge>
+                                        <Avatar
+                                            size="small"
+                                            src={localStorage.headimgurl}
+                                            style={{marginRight: 5}}/>
+                                        <Dropdown
+                                            placement="bottomCenter"
+                                            overlay={(
+                                                <Menu>
+                                                    <Menu.Item>
+                                                        <Icon type="profile"/>
+                                                        <span onClick={this.userCenter}>个人中心</span>
+                                                    </Menu.Item>
+                                                    <Menu.Item>
+                                                        <Icon type="logout"/>
+                                                        <span onClick={this.logout}>退出登录</span>
+                                                    </Menu.Item>
+                                                </Menu>
+                                            )}
+                                        >
+                                            <a className="user-setting">
+                                                            <span
+                                                                className='user-nickname'>{localStorage.nickName}</span>
+                                                <Icon type="down"/>
+                                            </a>
+                                        </Dropdown>
+                                    </Row>
+                                ) : (<Row type="flex" justify="end" align="middle">
+                                    <Avatar
+                                        size="small"
+                                        icon="user"
+                                        style={{marginRight: 10}}/>
+                                    <Link to='login'>请登录</Link>
+                                </Row>)
+                            }
+                        </div>
+                    </Row>
+                </Row>
                 <Modal
                     title="消息列表"
                     wrapClassName='zui-message-modal'
@@ -361,7 +375,7 @@ class ZZHeader extends React.Component {
                         )}
                     />
                 </Modal>
-            </Affix>
+            </div>
         );
     }
 }

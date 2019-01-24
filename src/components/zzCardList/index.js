@@ -78,7 +78,7 @@ class ZZCardList extends React.Component {
         const {renderItem} = this.props;
         const {loading, showLoadingMore, loadingMore, listData} = this.state;
         const loadMore = listData.length > 0 && showLoadingMore ? (
-            <div style={{textAlign: 'center', marginTop: 12, height: 32, lineHeight: '32px'}}>
+            <div className='load-more'>
                 {loadingMore && <Spin/>}
                 {!loadingMore && <Button onClick={this.onLoadMore}><Icon type="plus"/> 加载更多</Button>}
             </div>
