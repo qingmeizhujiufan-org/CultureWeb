@@ -102,27 +102,31 @@ class Detail extends React.Component {
     }
 
     collect = () => {
-        const param = {};
-        param.cultureId = this.props.params.id;
-        param.userId = 'fd6dd05d-4b9a-48a2-907a-16743a5125dd';
-        axios.post('culture/collect', param).then(res => res.data).then(data => {
-            if (data.success) {
-                const data = this.state.data;
-                const isCollect = data.isCollect;
-                data.isCollect = !isCollect;
-                if (isCollect) {
-                    message.success('已取消收藏');
-                } else {
-                    message.success('已收藏');
-                }
+        if (localStorage.userId) {
+            const param = {};
+            param.cultureId = this.props.params.id;
+            param.userId = localStorage.userId;
+            axios.post('culture/collect', param).then(res => res.data).then(data => {
+                if (data.success) {
+                    const data = this.state.data;
+                    const isCollect = data.isCollect;
+                    data.isCollect = !isCollect;
+                    if (isCollect) {
+                        message.success('已取消收藏');
+                    } else {
+                        message.success('已收藏');
+                    }
 
-                this.setState({
-                    data
-                });
-            } else {
-                message.error(data.backMsg);
-            }
-        })
+                    this.setState({
+                        data
+                    });
+                } else {
+                    message.error(data.backMsg);
+                }
+            })
+        } else {
+            message.warn('请先登录');
+        }
     }
 
     scrollToAnchor = anchorName => {
@@ -162,16 +166,16 @@ class Detail extends React.Component {
                                 </Col>
                                 <Col span={8}>
                                     <div style={{textAlign: 'right', lineHeight: '24px'}}>
-                                        <span style={{marginRight: 75, verticalAlign: 'sub', cursor: 'pointer'}}
+                                        <span style={{marginRight: 75, verticalAlign: 'bottom', cursor: 'pointer'}}
                                               onClick={() => this.scrollToAnchor('comment')}>
                                             <Icon type="form" style={{
                                                 marginRight: 10,
                                                 fontSize: 24,
                                                 color: '#FFA600',
-                                                verticalAlign: 'sub',
+                                                verticalAlign: 'bottom',
                                             }}/>评论
                                         </span>
-                                        <span style={{verticalAlign: 'sub', cursor: 'pointer'}}
+                                        <span style={{verticalAlign: 'bottom', cursor: 'pointer'}}
                                               onClick={() => this.collect()}>
                                             <Icon
                                                 type={data.isCollect ? "star" : "star-o"}
@@ -179,7 +183,7 @@ class Detail extends React.Component {
                                                     marginRight: 10,
                                                     fontSize: 24,
                                                     color: '#FFA600',
-                                                    verticalAlign: 'sub'
+                                                    verticalAlign: 'bottom'
                                                 }}/>收藏
                                         </span>
                                     </div>

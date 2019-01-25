@@ -79,7 +79,6 @@ class ZZHeader extends React.Component {
     }
 
     componentWillReceiveProps = nextProps => {
-        console.log('zzheader nextProps === ', nextProps);
         if ('hash' in nextProps && nextProps.hash !== this.props.hash) {
             this.selectActiveTab();
         }
@@ -90,7 +89,6 @@ class ZZHeader extends React.Component {
         const router = this.context.router;
         const pathname = router.location.pathname;
         const path = pathname.split('/');
-        console.log('path == ', path);
         if (!path[2] || path[2] === '' || path[2] === 'home') {
             this.setActiveTab(0);
             return;
@@ -291,13 +289,15 @@ class ZZHeader extends React.Component {
                             {
                                 localStorage.userId ? (
                                     <Row type="flex" justify="end" align="middle">
-                                        <Badge count={messageList.length}>
-                                            <Icon
-                                                type="bell"
-                                                className='fontsize-20 message'
-                                                onClick={this.showModal}
-                                            />
-                                        </Badge>
+                                        <div className='wrap-message'>
+                                            <Badge count={messageList.length}>
+                                                <Icon
+                                                    type="bell"
+                                                    className='fontsize-20 message'
+                                                    onClick={this.showModal}
+                                                />
+                                            </Badge>
+                                        </div>
                                         <Avatar
                                             size="small"
                                             src={localStorage.headimgurl}

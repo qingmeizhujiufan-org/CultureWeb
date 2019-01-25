@@ -143,7 +143,7 @@ class Picture extends React.Component {
     }
 
     showPublishModal = () => {
-        if(!localStorage.userId){
+        if (!localStorage.userId) {
             message.warn('抱歉！您还未登录，请登录后再发布');
             return;
         }
@@ -227,7 +227,7 @@ class Picture extends React.Component {
     handlePreviewCancel = () => this.setState({previewVisible: false})
 
     collect = (obj, index) => {
-        if(!localStorage.userId){
+        if (!localStorage.userId) {
             message.warn('抱歉！您还未登录，请登录后再收藏');
             return;
         }
@@ -377,8 +377,13 @@ class Picture extends React.Component {
                                                         </Col>
                                                     </Row>
                                                     <div style={{textAlign: 'center'}}>
-                                                        <Button loading={submitLoading} htmlType="submit"
-                                                                className='zui-btn'>上传美图</Button>
+                                                        <Button
+                                                            className='zui-btn'
+                                                            type='primary'
+                                                            loading={submitLoading}
+                                                            htmlType="submit"
+
+                                                        >上传美图</Button>
                                                     </div>
                                                 </Form>
                                             </div>
@@ -473,18 +478,20 @@ class Picture extends React.Component {
                                                 <div className='info'>
                                                     <div className='creator'>
                                                         <Row type="flex" justify="space-between">
-                                                            <Col span={11} offset={1}>
-                                                                <Avatar
-                                                                    style={{
-                                                                        marginRight: 5,
-                                                                        verticalAlign: '-7px',
-                                                                    }}
-                                                                    size="small"
-                                                                    icon='user'
-                                                                    src={(item.avatar && item.avatar.filePath) ? restUrl.BASE_HOST + item.avatar.filePath : null}
-                                                                /> {item.creatorName}
+                                                            <Col span={15} offset={1}>
+                                                                <div className='creator-info'>
+                                                                    <Avatar
+                                                                        style={{
+                                                                            marginRight: 5,
+                                                                            verticalAlign: '-7px',
+                                                                        }}
+                                                                        size="small"
+                                                                        icon='user'
+                                                                        src={item.headimgurl ? item.headimgurl : null}
+                                                                    /> {item.creatorName}
+                                                                </div>
                                                             </Col>
-                                                            <Col span={11}>
+                                                            <Col span={7}>
                                                                 <div
                                                                     className="date">{shiftDate(item.create_time)}</div>
                                                             </Col>

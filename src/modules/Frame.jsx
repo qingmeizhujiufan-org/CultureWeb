@@ -60,9 +60,9 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <Affix>
+                {/*<Affix>*/}
                     <ZZHeader hash={hashChange}/>
-                </Affix>
+                {/*</Affix>*/}
                 <div style={{minHeight: 'calc(100vh - 314px)'}}>
                     {this.props.children}
                 </div>

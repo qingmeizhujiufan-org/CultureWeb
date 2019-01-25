@@ -19,7 +19,7 @@
             box-shadow: 0px 0px 11px 0px rgba(144, 144, 144, 0.5);
 
             img {
-                transform: scale(1.05);
+                transform: scale(1.1);
             }
         }
 
@@ -29,7 +29,7 @@
 
         img {
             width: 100%;
-            transition: transform .2s ease-in;
+            transition: transform .2s ease-in-out;
         }
 
         .info {
@@ -38,6 +38,12 @@
 
             .creator {
                 color: #170202;
+
+                &-info {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
             }
 
             .date {
