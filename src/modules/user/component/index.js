@@ -5,7 +5,6 @@ import {Icon, Tabs, Avatar, List, Card, message, Modal} from 'antd';
 import _find from 'lodash/find';
 import restUrl from 'RestUrl';
 import '../index.less';
-import defaultUser from 'Img/default-user.jpg';
 import {shiftDate} from "../../../util/util";
 import empty from 'Img/personal-empty.png';
 import axios from "Utils/axios";
@@ -276,7 +275,7 @@ class Index extends React.Component {
                                                         <div className='zui-card-item-content'>
                                                             <div>{item.artTitle}</div>
                                                             <div
-                                                                className='price'>{'¥' + item.artMoney.toFixed(2)}</div>
+                                                                className='price'>{item.create_time ? item.create_time.substring(0, 10) : null}</div>
                                                         </div>
                                                         <div className='zui-card-item-footer'>
                                                             <a className='delete'

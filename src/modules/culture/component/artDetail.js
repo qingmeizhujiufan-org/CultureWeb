@@ -93,11 +93,11 @@ class ArtDetail extends React.Component {
     }
 
     collect = () => {
-        if(localStorage.userId){
+        if (localStorage.userId) {
             const param = {};
             param.artId = this.props.params.id;
             param.userId = localStorage.userId;
-            axios.get('art/collect', {params: param}).then(res => res.data).then(data => {
+            axios.post('art/collect', param).then(res => res.data).then(data => {
                 if (data.success) {
                     const data = this.state.data;
                     const isCollect = data.isCollect;
@@ -115,7 +115,7 @@ class ArtDetail extends React.Component {
                     message.error(data.backMsg);
                 }
             })
-        }else {
+        } else {
             message.warn('请先登录');
         }
     }
