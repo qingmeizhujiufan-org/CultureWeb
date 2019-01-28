@@ -158,16 +158,12 @@ class ZZHeader extends React.Component {
     }
 
     logout = () => {
+        localStorage.clear();
+        this.context.router.push('/login');
+
         let param = {};
         param.userId = localStorage.userId;
-        axios.post('user/LoginOut', param).then(res => res.data).then(data => {
-            if (data.success) {
-                localStorage.clear();
-                this.context.router.push('/login');
-            } else {
-                message.error(data.backMsg);
-            }
-        });
+        axios.post('user/LoginOut', param);
     }
 
     getSelected = value => {

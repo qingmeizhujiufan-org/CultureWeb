@@ -178,7 +178,7 @@ class Detail extends React.Component {
                                         <span style={{verticalAlign: 'bottom', cursor: 'pointer'}}
                                               onClick={() => this.collect()}>
                                             <Icon
-                                                type={data.isCollect ? "star" : "star-o"}
+                                                type="star-o"
                                                 style={{
                                                     marginRight: 10,
                                                     fontSize: 24,

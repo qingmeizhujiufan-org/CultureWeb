@@ -142,13 +142,21 @@ class Index extends React.Component {
             okText: '确认',
             cancelText: '取消',
             onOk: () => {
+                const params = {};
                 let url;
-                if (type === 'taste') url = deleteUrl;
-                else if (type === 'art') url = delete2Url;
-                else if (type === 'culture') url = delete3Url;
-                const param = {};
-                param.id = id;
-                axios.post('culture/queryUserCollectCulture', param).then(res => res.data).then(data => {
+                if (type === 'taste') {
+                    url = deleteUrl;
+                    params.id = id;
+                } else if (type === 'art') {
+                    url = delete2Url;
+                    params.artId = id;
+                } else if (type === 'culture') {
+                    url = delete3Url;
+                    params.cultureId = id;
+                }
+
+                params.userId = localStorage.userId;
+                axios.post(url, params).then(res => res.data).then(data => {
                     if (data.success) {
                         message.success('删除成功！');
                         if (type === 'taste') {
