@@ -160,6 +160,10 @@ class ZZComment extends React.Component {
             param.pId = pId;
             param.userId = localStorage.userId;
             param.comment = pId ? replyText : commentText;
+            if(param.comment.trim() === ''){
+                message.warn('评论内容不能为空！');
+                return;
+            }
             if (!pId) this.setState({commentLoading: true});
             else this.setState({replyLoading: true});
             axios.post(saveUrl, param).then(res => res.data).then(data => {

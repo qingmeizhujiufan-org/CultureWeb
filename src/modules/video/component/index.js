@@ -26,12 +26,16 @@ class Index extends React.Component {
     }
 
     componentWillMount = () => {
+        if (sessionStorage.searchOption === 'news') {
+            this.setState({conditionText: sessionStorage.searchValue});
+        }
     }
 
     componentDidMount = () => {
     }
 
     onSearch = value => {
+        sessionStorage.clear();
         const {conditionText} = this.state;
         if (value === conditionText) return;
 

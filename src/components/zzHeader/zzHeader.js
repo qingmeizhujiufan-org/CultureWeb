@@ -193,10 +193,10 @@ class ZZHeader extends React.Component {
                         nextRouter = "news/list";
                         index = 2;
                         break;
-                    case  'picture':
-                        nextRouter = "picture/list";
-                        index = 3;
-                        break;
+                    // case  'picture':
+                    //     nextRouter = "picture/list";
+                    //     index = 3;
+                    //     break;
                     case  'video':
                         nextRouter = "video/list";
                         index = 4;
@@ -205,6 +205,7 @@ class ZZHeader extends React.Component {
                         nextRouter = "culture/list";
                         index = 1;
                 }
+
                 this.context.router.push('/frame/' + nextRouter);
             }
         });

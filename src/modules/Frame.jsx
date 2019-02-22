@@ -20,6 +20,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount = () => {
+        sessionStorage.clear();
         this.queryMusicDetail();
 
         window.addEventListener('hashchange', this.setHash);
@@ -40,9 +41,13 @@ export default class App extends React.Component {
         axios.get('Server/queryMusic').then(res => res.data).then(data => {
             if (data.success) {
                 if (data.music && data.music.bgMusic) {
-                    this.setState({
-                        data: data.music.bgMusic,
-                        stop: true
+                    let audio = new Audio();
+                    audio.src = restUrl.BASE_HOST + data.music.bgMusic.filePath;
+                    audio.addEventListener('canplaythrough', () => {
+                        this.setState({
+                            data: data.music.bgMusic,
+                            stop: true
+                        });
                     });
                 }
             }
@@ -61,7 +66,7 @@ export default class App extends React.Component {
         return (
             <div>
                 {/*<Affix>*/}
-                    <ZZHeader hash={hashChange}/>
+                <ZZHeader hash={hashChange}/>
                 {/*</Affix>*/}
                 <div style={{minHeight: 'calc(100vh - 314px)'}}>
                     {this.props.children}

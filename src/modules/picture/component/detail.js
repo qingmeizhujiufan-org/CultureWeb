@@ -23,8 +23,6 @@ class Detail extends React.Component {
             ad_1: {},
             ad_2: {}
         };
-
-        this.handleCommentList = this.handleCommentList.bind(this);
     }
 
     componentWillMount = () => {
@@ -202,7 +200,7 @@ class Detail extends React.Component {
                                     otherShow.map((item, index) => {
                                         return (
                                             <Col key={item.id + index} className="grid-item">
-                                                <Link to={`frame/picture/detail/${item.id}`}>
+                                                <Link to={`frame/picture/detail/${item.id}`} target='_blank'>
                                                     <img src={restUrl.BASE_HOST + item.tasteCover.filePath}/>
                                                     <div className='info'>
                                                         <div className='creator'>

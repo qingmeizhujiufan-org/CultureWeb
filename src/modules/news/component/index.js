@@ -37,6 +37,9 @@ class Index extends React.Component {
     }
 
     componentDidMount = () => {
+        if (sessionStorage.searchOption === 'news') {
+            this.setState({conditionText: sessionStorage.searchValue});
+        }
     }
 
     componentWillReceiveProps = nextProps => {
@@ -63,6 +66,7 @@ class Index extends React.Component {
     }
 
     onSearch = value => {
+        sessionStorage.clear();
         const {conditionText} = this.state;
         if (value === conditionText) return;
 

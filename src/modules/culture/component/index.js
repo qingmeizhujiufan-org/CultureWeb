@@ -36,16 +36,19 @@ class Index extends React.Component {
     }
 
     componentWillMount = () => {
+        if (sessionStorage.searchOption === 'culture') {
+            this.setState({conditionText: sessionStorage.searchValue});
+        }
     }
 
     componentDidMount = () => {
-        this.getCityList();
+        // this.getCityList();
     }
 
     componentWillReceiveProps = nextProps => {
         this.setState({
             loading: true,
-            conditionText: sessionStorage.getItem('searchValue') ? sessionStorage.getItem('searchValue') : ''
+            conditionText: sessionStorage.getItem('searchValue') || ''
         })
     }
 
@@ -81,6 +84,7 @@ class Index extends React.Component {
     }
 
     onSearch = value => {
+        sessionStorage.clear();
         const {conditionText} = this.state;
         if (value === conditionText) return;
 
@@ -188,23 +192,23 @@ class Index extends React.Component {
                     </Row>
                 </div>
                 {/*<div className="page-content city-section"*/}
-                     {/*style={{height: showMoreCity ? 'auto' : 53}}*/}
+                {/*style={{height: showMoreCity ? 'auto' : 53}}*/}
                 {/*>*/}
-                    {/*<div className="content clearfix">*/}
-                        {/*<ul className='zui-unstyled inline zui-pull-left city-list'>*/}
-                            {/*{*/}
-                                {/*cityList.map(item => {*/}
-                                    {/*return (*/}
-                                        {/*<li key={item.id} className={item.id === activeCity ? 'active' : null}*/}
-                                            {/*onClick={() => this.onChangeCity(item.id)}>{item.cityName}</li>*/}
-                                    {/*)*/}
-                                {/*})*/}
-                            {/*}*/}
-                        {/*</ul>*/}
-                        {/*<div className='content-more' onClick={this.onMoreCity}>*/}
-                            {/*<span>更多<Icon type={showMoreCity ? 'up' : 'down'} style={{marginLeft: 5}}></Icon></span>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
+                {/*<div className="content clearfix">*/}
+                {/*<ul className='zui-unstyled inline zui-pull-left city-list'>*/}
+                {/*{*/}
+                {/*cityList.map(item => {*/}
+                {/*return (*/}
+                {/*<li key={item.id} className={item.id === activeCity ? 'active' : null}*/}
+                {/*onClick={() => this.onChangeCity(item.id)}>{item.cityName}</li>*/}
+                {/*)*/}
+                {/*})*/}
+                {/*}*/}
+                {/*</ul>*/}
+                {/*<div className='content-more' onClick={this.onMoreCity}>*/}
+                {/*<span>更多<Icon type={showMoreCity ? 'up' : 'down'} style={{marginLeft: 5}}></Icon></span>*/}
+                {/*</div>*/}
+                {/*</div>*/}
                 {/*</div>*/}
                 <div className="page-content">
                     <div className="content">
