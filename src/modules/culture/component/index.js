@@ -42,7 +42,7 @@ class Index extends React.Component {
     }
 
     componentDidMount = () => {
-        // this.getCityList();
+        this.getCityList();
     }
 
     componentWillReceiveProps = nextProps => {
@@ -191,25 +191,25 @@ class Index extends React.Component {
                         </Col>
                     </Row>
                 </div>
-                {/*<div className="page-content city-section"*/}
-                {/*style={{height: showMoreCity ? 'auto' : 53}}*/}
-                {/*>*/}
-                {/*<div className="content clearfix">*/}
-                {/*<ul className='zui-unstyled inline zui-pull-left city-list'>*/}
-                {/*{*/}
-                {/*cityList.map(item => {*/}
-                {/*return (*/}
-                {/*<li key={item.id} className={item.id === activeCity ? 'active' : null}*/}
-                {/*onClick={() => this.onChangeCity(item.id)}>{item.cityName}</li>*/}
-                {/*)*/}
-                {/*})*/}
-                {/*}*/}
-                {/*</ul>*/}
-                {/*<div className='content-more' onClick={this.onMoreCity}>*/}
-                {/*<span>更多<Icon type={showMoreCity ? 'up' : 'down'} style={{marginLeft: 5}}></Icon></span>*/}
-                {/*</div>*/}
-                {/*</div>*/}
-                {/*</div>*/}
+                <div className="page-content city-section"
+                     style={{height: showMoreCity ? 'auto' : 53}}
+                >
+                    <div className="content clearfix">
+                        <ul className='zui-unstyled inline zui-pull-left city-list'>
+                            {
+                                cityList.map(item => {
+                                    return (
+                                        <li key={item.id} className={item.id === activeCity ? 'active' : null}
+                                            onClick={() => this.onChangeCity(item.id)}>{item.cityName}</li>
+                                    )
+                                })
+                            }
+                        </ul>
+                        <div className='content-more' onClick={this.onMoreCity}>
+                            <span>更多<Icon type={showMoreCity ? 'up' : 'down'} style={{marginLeft: 5}}></Icon></span>
+                        </div>
+                    </div>
+                </div>
                 <div className="page-content">
                     <div className="content">
                         {
